@@ -2,6 +2,7 @@ require 'sinatra'
 require 'data_mapper'
 require 'json'
 require 'rack/contrib'
+require 'twilio-ruby'
 
 DataMapper.setup(:default, 'postgres://postgres:@localhost/marketing_notifications')
 
@@ -27,12 +28,9 @@ end
 post '/subscriber' do
   if params[:Body]
     subscriber = create_or_update_subscriber(params)
-    if subscriber.subscribed
-      'You are now subscribed for updates.'
-    else
-      "You have unsubscribed from notifications. Test 'subscribe' to start receieving updates again"
-    end
-    subscriber.subscribed ? 'subscribed' : 'unsubscribed'
+    subscription_message = 'You are now subscribed for updates.'
+    unsubscritpion_message = "You have unsubscribed from notifications. Test 'subscribe' to start receieving updates again"
+    subscriber.subscribed ? format_message(subscription_message) : format_message(unsubscritpion_message)
   else
     "Thanks for contacting TWBC! Text 'subscribe' if you would to receive updates via text message."
   end
@@ -40,6 +38,13 @@ end
 
 def is_subscription(command)
   command == 'subscribe'
+end
+
+def format_message(message)
+  response = Twilio::TwiML::Response.new do |r|
+    r.Message message
+  end
+  response.text
 end
 
 def create_or_update_subscriber(params)
