@@ -21,8 +21,8 @@ Subscriber.auto_upgrade!
 
 use ::Rack::PostBodyContentTypeParser
 
-get '/hi' do
-  'hello world'
+get '/' do
+  erb :index
 end
 
 post '/subscriber' do
@@ -32,7 +32,7 @@ post '/subscriber' do
     unsubscritpion_message = "You have unsubscribed from notifications. Test 'subscribe' to start receieving updates again"
     subscriber.subscribed ? format_message(subscription_message) : format_message(unsubscritpion_message)
   else
-    "Thanks for contacting TWBC! Text 'subscribe' if you would to receive updates via text message."
+    format_message("Thanks for contacting TWBC! Text 'subscribe' if you would to receive updates via text message.")
   end
 end
 
