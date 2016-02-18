@@ -13,6 +13,10 @@ class Subscriber
   property :phone_number, String
   property :subscribed, Boolean
 
+  def send_message(message, image_url)
+
+  end
+
 end
 
 DataMapper.finalize
@@ -23,6 +27,12 @@ use ::Rack::PostBodyContentTypeParser
 
 get '/' do
   erb :index
+end
+
+post '/messages' do
+  Subscriber.all.each do |subscriber|
+    subscriber.send_message(params['message'], params['image_url'])
+  end
 end
 
 post '/subscriber' do

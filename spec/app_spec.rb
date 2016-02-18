@@ -49,4 +49,11 @@ describe 'marketing notifications' do
     expect(last_response).to be_ok
     expect(last_response.body).to include('unsubscribed')
   end
+  
+  it 'should send messages to all subscribers' do
+    subscriber = double('subscriber')
+    allow(Subscriber).to receive(:all).and_return([subscriber])
+    expect(subscriber).to receive(:send_message).with('just a test message', 'image.url')
+    post 'messages', {message: 'just a test message', image_url: 'image.url'}.to_json, 'CONTENT_TYPE' => 'application/json'
+  end
 end
