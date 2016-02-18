@@ -15,11 +15,16 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-9">
-        
+
+        <% if message %>
+          <div class="alert alert-success">
+            <strong><%= message %></strong>
+          </div>
+        <% end %>
         <h1>SMS Notifications</h1>
         <p>Use this form to send MMS notifications to any subscribers.</p>
-
-        <form action="new" method="post">
+        
+        <form action="/messages" method="post">
           <div class="form-group">
             <label for="message">Enter a Message:</label>
             <input name="message" type="text" class="form-control" placeholder="New things are happening!" />

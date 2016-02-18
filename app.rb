@@ -26,13 +26,15 @@ Subscriber.auto_upgrade!
 use ::Rack::PostBodyContentTypeParser
 
 get '/' do
-  erb :index
+  erb :index, locals: {message: nil}
 end
 
 post '/messages' do
   Subscriber.all.each do |subscriber|
     subscriber.send_message(params['message'], params['image_url'])
   end
+
+  erb :index, locals: {message: 'Messages Sent!!!'}
 end
 
 post '/subscriber' do
