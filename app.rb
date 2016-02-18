@@ -26,7 +26,7 @@ get '/hi' do
 end
 
 post '/subscriber' do
-  if params[:Body]
+  if is_valid(params[:Body])
     subscriber = create_or_update_subscriber(params)
     subscription_message = 'You are now subscribed for updates.'
     unsubscritpion_message = "You have unsubscribed from notifications. Test 'subscribe' to start receieving updates again"
@@ -38,6 +38,10 @@ end
 
 def is_subscription(command)
   command == 'subscribe'
+end
+
+def is_valid(command)
+  command == 'subscribe' or command == 'unsubscribe'
 end
 
 def format_message(message)
