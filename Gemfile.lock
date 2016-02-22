@@ -61,6 +61,7 @@ GEM
     json_pure (1.8.3)
     jwt (1.5.2)
     multi_json (1.11.2)
+    pg (0.18.4)
     rack (1.6.4)
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
@@ -101,6 +102,7 @@ DEPENDENCIES
   data_mapper
   dm-postgres-adapter
   json
+  pg
   rack-contrib
   rack-test
   rspec
