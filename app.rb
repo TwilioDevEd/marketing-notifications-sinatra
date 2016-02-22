@@ -4,7 +4,7 @@ require 'json'
 require 'rack/contrib'
 require 'twilio-ruby'
 
-DataMapper.setup(:default, 'postgres://postgres:@localhost/marketing_notifications')
+DataMapper.setup(:default, 'postgres://postgres:postgres@localhost/marketing_notifications')
 
 class Subscriber
   include DataMapper::Resource 
@@ -14,7 +14,15 @@ class Subscriber
   property :subscribed, Boolean
 
   def send_message(message, image_url)
-
+    @twilio_number = ENV['TWILIO_PHONE_NUMBER']
+    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+    message = @client.account.messages.create(
+      :from => @twilio_number,
+      :to => "+5581994596094",
+      :body => message,
+      :media_url => image_url
+    )       
+    puts message.to  
   end
 
 end
@@ -41,19 +49,19 @@ post '/subscriber' do
   if is_valid(params[:Body])
     subscriber = create_or_update_subscriber(params)
     subscription_message = 'You are now subscribed for updates.'
-    unsubscritpion_message = "You have unsubscribed from notifications. Test 'subscribe' to start receieving updates again"
+    unsubscritpion_message = "You have unsubscribed from notifications. Test 'add' to start receieving updates again"
     subscriber.subscribed ? format_message(subscription_message) : format_message(unsubscritpion_message)
   else
-    format_message("Thanks for contacting TWBC! Text 'subscribe' if you would to receive updates via text message.")
+    format_message("Thanks for contacting TWBC! Text 'add' if you would to receive updates via text message.")
   end
 end
 
 def is_subscription(command)
-  command == 'subscribe'
+  command == 'add'
 end
 
 def is_valid(command)
-  command == 'subscribe' or command == 'unsubscribe'
+  command == 'add' or command == 'remove'
 end
 
 def format_message(message)
