@@ -13,19 +13,24 @@ $ bundle exec rake createDb
 $ export TWILIO_ACCOUNT_SID=your account sid
 $ export TWILIO_AUTH_TOKEN=your auth token
 $ export TWILIO_NUMBER=+16515559999
-$ rake spec
+$ dunble exec rake spec
 $ ruby app.run
 ```
 
 Then visit the application at http://localhost:4567/
 
-In order to receive subscribers you will need to point a twilio number to the app running in production. To do that follow the step to Deploy to Heroku below.
+In order to receive subscribers you will need to point a twilio number to the app running. To do that we can use ngrok to expose the application
+to the wilder internet.
+
+`
+  ngrok http 4567
+`
 
 ## Step 1. Configure your Twilio number
 
 Go to your dashboard on [Twilio](https://www.twilio.com/user/account/phone-numbers/incoming). Click on Twilio Numbers and choose a number to setup.
 
-On the phone number page, enter `https://<appname.herokuapp.com>/incoming` into the _Messaging_ Request URL field.
+On the phone number page, enter the address provided by ngrok into the _Messaging_ Request URL field.
 
 [![Request URL](http://howtodocs.s3.amazonaws.com/setup-twilio-number.png)]
 
