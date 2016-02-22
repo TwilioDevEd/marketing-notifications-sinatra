@@ -19,7 +19,7 @@ get '/' do
 end
 
 post '/messages' do
-  Subscriber.all.each do |subscriber|
+  Subscriber.all(subscribed: true).each do |subscriber|
     subscriber.send_message(params['message'], params['image_url'])
   end
 
