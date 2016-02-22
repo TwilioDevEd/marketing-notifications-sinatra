@@ -9,7 +9,7 @@ Clone this repository and cd into the directory then.
 
 ```
 $ bundle install
-$ bundle exec rake createDb 
+$ bundle exec rake createDb[user_name]
 $ export TWILIO_ACCOUNT_SID=your account sid
 $ export TWILIO_AUTH_TOKEN=your auth token
 $ export TWILIO_NUMBER=+16515559999
