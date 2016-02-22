@@ -2,7 +2,6 @@ require 'sinatra'
 require 'data_mapper'
 require 'json'
 require 'rack/contrib'
-require 'twilio-ruby'
 require_relative 'model/subscriber'
 
 DataMapper.setup(:default, 'postgres://postgres:postgres@localhost/marketing_notifications')
