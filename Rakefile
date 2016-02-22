@@ -3,8 +3,8 @@ require 'fileutils'
 
 RSpec::Core::RakeTask.new(:spec)
 
-task :createDb do
-  sh "psql -c 'create database marketing_notifications;' -U postgres" 
+task :createDb, [:username] do |t, args|
+   sh "psql -c 'create database testando_task;' -U #{args[:username]}"
 end
 
 task :default => :spec
