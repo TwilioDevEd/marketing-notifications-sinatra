@@ -44,7 +44,7 @@ describe 'marketing notifications' do
     
     allow(Subscriber).to receive(:first).and_return(subscriber)
 
-    post 'subscriber', {From: '999999999', Body: 'unsubscribe'}.to_json, 'CONTENT_TYPE' => 'application/json'
+    post 'subscriber', {From: '999999999', Body: 'remove'}.to_json, 'CONTENT_TYPE' => 'application/json'
 
     expect(last_response).to be_ok
     expect(last_response.body).to include('unsubscribed')
