@@ -19,7 +19,7 @@ $ ruby app.run
 
 Then visit the application at http://localhost:4567/
 
-In order to receive subscribers you will need to point a twilio number to the app running. To do that we can use ngrok to expose the application
+In order to receive subscribers you will need to point a twilio number to the app running. To do that we can use [ngrok](https://ngrok.com/) to expose the application
 to the wilder internet.
 
 `
