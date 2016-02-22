@@ -9,7 +9,7 @@ rvm:
 before_script:
   - psql -c 'create database marketing_notifications;' -U postgres
 
-before_instale:
+before_install:
   - sudo apt-get install postgresql-server-dev-9.1 libpq-dev
 
 install:
