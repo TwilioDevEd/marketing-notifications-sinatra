@@ -5,12 +5,14 @@ require 'rack/contrib'
 require_relative 'model/subscriber'
 
 DataMapper.setup(:default, 'postgres://postgres:postgres@localhost/marketing_notifications')
-
 DataMapper.finalize
-
 Subscriber.auto_upgrade!
 
 use ::Rack::PostBodyContentTypeParser
+
+SUBSCRIPTION_MESSAGE = 'You are now subscribed for updates.'
+UNSUBSCRIPTION_MESSAGE = "You have unsubscribed from notifications. Test 'add' to start receieving updates again"
+INSTRUCTIONS_MESSAGE = "Thanks for contacting TWBC! Text 'add' if you would to receive updates via text message." 
 
 get '/' do
   erb :index, locals: {message: nil}
@@ -27,11 +29,9 @@ end
 post '/subscriber' do
   if is_valid(params[:Body])
     subscriber = create_or_update_subscriber(params)
-    subscription_message = 'You are now subscribed for updates.'
-    unsubscritpion_message = "You have unsubscribed from notifications. Test 'add' to start receieving updates again"
-    subscriber.subscribed ? format_message(subscription_message) : format_message(unsubscritpion_message)
+    subscriber.subscribed ? format_message(SUBSCRIPTION_MESSAGE) : format_message(UNSUBSCRIPTION_MESSAGE)
   else
-    format_message("Thanks for contacting TWBC! Text 'add' if you would to receive updates via text message.")
+    format_message(INSTRUCTIONS_MESSAGE)
   end
 end
 
