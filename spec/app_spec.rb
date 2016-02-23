@@ -10,7 +10,7 @@ describe 'marketing notifications' do
     Sinatra::Application
   end
 
-  it 'inform the contact when no message is send' do
+  it 'informs the contact when no message is send' do
     allow(Subscriber).to receive(:first).and_return(nil)
 
     post 'subscriber', { From: '999999999' }.to_json,
@@ -20,7 +20,7 @@ describe 'marketing notifications' do
     expect(last_response.body).to include('Thanks')
   end
 
-  it 'inform the contact when message is not a valid command' do
+  it 'informs the contact when message is not a valid command' do
     allow(Subscriber).to receive(:first).and_return(nil)
 
     post 'subscriber',
@@ -31,7 +31,7 @@ describe 'marketing notifications' do
     expect(last_response.body).to include('Thanks')
   end
 
-  it 'register a new subscriber when asked' do
+  it 'registers a new subscriber when asked' do
     subscriber = double('subscriber', update: true, subscribed: true)
     allow(Subscriber).to receive(:first).and_return(subscriber)
 
@@ -42,7 +42,7 @@ describe 'marketing notifications' do
     expect(last_response.body).to include('subscribed')
   end
 
-  it 'allow to unsubscribe' do
+  it 'allows to unsubscribe' do
     subscriber = double('subscriber', update: false, subscribed: false)
     allow(Subscriber).to receive(:first).and_return(subscriber)
 
@@ -53,7 +53,7 @@ describe 'marketing notifications' do
     expect(last_response.body).to include('unsubscribed')
   end
 
-  it 'send messages to all subscribers' do
+  it 'sends messages to all subscribers' do
     subscriber = double('subscriber')
     allow(Subscriber).to receive(:all).and_return([subscriber])
     expect(subscriber).to receive(:send_message)
