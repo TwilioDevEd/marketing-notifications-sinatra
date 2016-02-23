@@ -12,7 +12,7 @@ Subscriber.auto_upgrade!
 
 use ::Rack::PostBodyContentTypeParser
 
-SUBSCRIPTION_MESSAGE = 'You are now subscribed for updates.'.freeze
+SUBSCRIPTION_MESSAGE = 'You are now subscribed for updates.'
 UNSUBSCRIPTION_MESSAGE = %(
   You have unsubscribed from notifications.
   Test 'add' to start receiving updates again.
