@@ -13,7 +13,8 @@ describe 'marketing notifications' do
   it 'should respond to the contact when no message is send' do
     allow(Subscriber).to receive(:first).and_return(nil)
 
-    post 'subscriber', {From:'999999999'}.to_json, 'CONTENT_TYPE' => 'application/json'
+    post 'subscriber', { From: '999999999' }.to_json,
+         'CONTENT_TYPE' => 'application/json'
 
     expect(last_response).to be_ok
     expect(last_response.body).to include('Thanks')
@@ -22,7 +23,9 @@ describe 'marketing notifications' do
   it 'should respond to the contactt when message is not a valid command' do
     allow(Subscriber).to receive(:first).and_return(nil)
 
-    post 'subscriber', {From:'999999999', Body: 'not subscribe or unsubscribe'}.to_json, 'CONTENT_TYPE' => 'application/json'
+    post 'subscriber',
+         { From: '999999999', Body: 'not subscribe or unsubscribe' }.to_json,
+         'CONTENT_TYPE' => 'application/json'
 
     expect(last_response).to be_ok
     expect(last_response.body).to include('Thanks')
@@ -30,10 +33,10 @@ describe 'marketing notifications' do
 
   it 'should register a new subscriber when asked' do
     subscriber = double('subscriber', update: true, subscribed: true)
-    
     allow(Subscriber).to receive(:first).and_return(subscriber)
 
-    post 'subscriber', {From:'999999999', Body: 'add'}.to_json, 'CONTENT_TYPE' => 'application/json'
+    post 'subscriber', { From: '999999999', Body: 'add' }.to_json,
+         'CONTENT_TYPE' => 'application/json'
 
     expect(last_response).to be_ok
     expect(last_response.body).to include('subscribed')
@@ -41,19 +44,22 @@ describe 'marketing notifications' do
 
   it 'should allow to unsubscriber' do
     subscriber = double('subscriber', update: false, subscribed: false)
-    
     allow(Subscriber).to receive(:first).and_return(subscriber)
 
-    post 'subscriber', {From: '999999999', Body: 'remove'}.to_json, 'CONTENT_TYPE' => 'application/json'
+    post 'subscriber', { From: '999999999', Body: 'remove' }.to_json,
+         'CONTENT_TYPE' => 'application/json'
 
     expect(last_response).to be_ok
     expect(last_response.body).to include('unsubscribed')
   end
-  
+
   it 'should send messages to all subscribers' do
     subscriber = double('subscriber')
     allow(Subscriber).to receive(:all).and_return([subscriber])
-    expect(subscriber).to receive(:send_message).with('just a test message', 'image.url')
-    post 'messages', {message: 'just a test message', image_url: 'image.url'}.to_json, 'CONTENT_TYPE' => 'application/json'
+    expect(subscriber).to receive(:send_message)
+      .with('just a test message', 'image.url')
+    post 'messages',
+         { message: 'just a test message', image_url: 'image.url' }.to_json,
+         'CONTENT_TYPE' => 'application/json'
   end
 end
