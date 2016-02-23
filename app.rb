@@ -2,6 +2,7 @@ require 'sinatra'
 require 'data_mapper'
 require 'json'
 require 'rack/contrib'
+require 'tilt/erb'
 require_relative 'model/subscriber'
 
 database_url = 'postgres://postgres:postgres@localhost/marketing_notifications'
@@ -12,11 +13,11 @@ Subscriber.auto_upgrade!
 use ::Rack::PostBodyContentTypeParser
 
 SUBSCRIPTION_MESSAGE = 'You are now subscribed for updates.'.freeze
-UNSUBSCRIPTION_MESSAGE = p %(
+UNSUBSCRIPTION_MESSAGE = %(
   You have unsubscribed from notifications.
   Test 'add' to start receiving updates again.
 )
-INSTRUCTIONS_MESSAGE = p %(
+INSTRUCTIONS_MESSAGE = %(
   Thanks for contacting TWBC!
   Text 'add' if you would to receive updates via text message.
 )
