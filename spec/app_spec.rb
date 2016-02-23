@@ -10,7 +10,7 @@ describe 'marketing notifications' do
     Sinatra::Application
   end
 
-  it 'should respond to the contact when no message is send' do
+  it 'inform the contact when no message is send' do
     allow(Subscriber).to receive(:first).and_return(nil)
 
     post 'subscriber', { From: '999999999' }.to_json,
@@ -20,18 +20,18 @@ describe 'marketing notifications' do
     expect(last_response.body).to include('Thanks')
   end
 
-  it 'should respond to the contactt when message is not a valid command' do
+  it 'inform the contact when message is not a valid command' do
     allow(Subscriber).to receive(:first).and_return(nil)
 
     post 'subscriber',
-         { From: '999999999', Body: 'not subscribe or unsubscribe' }.to_json,
+         { From: '999999999', Body: 'not add or remove' }.to_json,
          'CONTENT_TYPE' => 'application/json'
 
     expect(last_response).to be_ok
     expect(last_response.body).to include('Thanks')
   end
 
-  it 'should register a new subscriber when asked' do
+  it 'register a new subscriber when asked' do
     subscriber = double('subscriber', update: true, subscribed: true)
     allow(Subscriber).to receive(:first).and_return(subscriber)
 
@@ -42,7 +42,7 @@ describe 'marketing notifications' do
     expect(last_response.body).to include('subscribed')
   end
 
-  it 'should allow to unsubscriber' do
+  it 'allow to unsubscribe' do
     subscriber = double('subscriber', update: false, subscribed: false)
     allow(Subscriber).to receive(:first).and_return(subscriber)
 
@@ -53,7 +53,7 @@ describe 'marketing notifications' do
     expect(last_response.body).to include('unsubscribed')
   end
 
-  it 'should send messages to all subscribers' do
+  it 'send messages to all subscribers' do
     subscriber = double('subscriber')
     allow(Subscriber).to receive(:all).and_return([subscriber])
     expect(subscriber).to receive(:send_message)

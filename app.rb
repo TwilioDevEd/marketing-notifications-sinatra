@@ -34,13 +34,14 @@ post '/messages' do
 end
 
 post '/subscriber' do
-  if valid?(params[:Body])
+  command = params[:Body]
+  if valid_command?(command)
     subscriber = create_or_update_subscriber(params)
 
     if subscriber.subscribed
       format_message(SUBSCRIPTION_MESSAGE)
     else
-      format_messagge(UNSUBSCRIPTION_MESSAGE)
+      format_message(UNSUBSCRIPTION_MESSAGE)
     end
   else
     format_message(INSTRUCTIONS_MESSAGE)
@@ -51,7 +52,7 @@ def subscription?(command)
   command == 'add'
 end
 
-def valid?(command)
+def valid_command?(command)
   command == 'add' || command == 'remove'
 end
 
@@ -68,7 +69,9 @@ def create_or_update_subscriber(params)
     subscriber.update(subscribed: subscription?(params[:Body]))
     subscriber
   else
-    Subscriber.create phone_number: params[:From],
-                      subscribed: subscription?(params[:Body])
+    Subscriber.create(
+      phone_number: params[:From],
+      subscribed: subscription?(params[:Body])
+    )
   end
 end
