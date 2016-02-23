@@ -55,7 +55,7 @@ On the phone number page, enter the address provided by ngrok into the _Messagin
 ![Request URL](http://howtodocs.s3.amazonaws.com/setup-twilio-number.png)
 
 #### Step 9. Wrap Up!
-By now, your application should be up and running at http://localhost:4567/. Now your subscribers will be able to 
+By now, your application should be up and running at [http://localhost:4567/](http://localhost:4567). Now your subscribers will be able to 
 text your new Twilio number to Subscribe to your Marketing Notifications line.
 
 Congratulations!
