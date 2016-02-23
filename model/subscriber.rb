@@ -20,4 +20,8 @@ class Subscriber
       media_url: image_url
     )
   end
+
+  def self.subscribed 
+    all(subscribed: true)
+  end
 end

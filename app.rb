@@ -19,7 +19,7 @@ UNSUBSCRIPTION_MESSAGE = %(
 )
 INSTRUCTIONS_MESSAGE = %(
   Thanks for contacting TWBC!
-  Text 'add' if you would to receive updates via text message.
+  Text 'add' if you would want to receive updates via text message.
 )
 
 get '/' do
@@ -27,7 +27,7 @@ get '/' do
 end
 
 post '/messages' do
-  Subscriber.all(subscribed: true).each do |subscriber|
+  Subscriber.subscribed.each do |subscriber|
     subscriber.send_message(params['message'], params['image_url'])
   end
 
