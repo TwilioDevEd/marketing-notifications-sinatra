@@ -5,8 +5,8 @@
     Ready to implement SMS and MMS marketing notifications? Here's how it works
     at a high level:
 
-    1. A user you'd like to reach sends an SMS text message to a Twilio phone
-       number you advertise in print, online, or in TV advertising.
+    1. A possible customer sends an SMS to a Twilio phone number you advertise
+       either online, on printed propaganda or on TV advertising.
     2. Your application confirms that the user wants to receive SMS and MMS
        notifications from your application.
     3. An administrator or marketing campaign manager uses a web form to craft a
@@ -21,7 +21,7 @@
     initiated by the user via SMS.
     * [Messages Resource](/docs/api/rest/sending-sms): We will use the REST API
     to broadcast messages out to all subscribers.
-    * [Sinatra Framework](//www.sinatrarb.com/): We'll use sinatra to structure 
+    * [Sinatra Framework](//www.sinatrarb.com/): We'll use sinatra to structure
     the application.
     * [DataMapper](//datamapper.org/): We'll use DataMapper to define the model and
     to persist it.
@@ -56,8 +56,8 @@
     This is the endpoint that will be called every time our application receives
     a message.
 
-    It checks if the command sent in the message is one of the commands that we 
-    are expecting and depending on that, it returns a message formatted in TwiML.
+    It checks if the command sent in the message is one of the commands that we
+    are expecting. Depending on that it returns a message formatted in TwiML.
 
     **See Also:**
     * [Twilio Ruby Helper Library](//twilio-ruby.readthedocs.org/en/latest/)
@@ -77,8 +77,9 @@
     to the user.
 
     And that's all we want at this step! We've created a `Subscriber` model to
-    keep track of the people that want our messages and saved them in the
-    database when they text us with a 'add' command.
+    keep track of the people that have requested our messages. We also have saved
+    their information on the database after receiving a text message with an 'add'
+    command.
 
 .step(
   data-title='Manage Subscriptions',
@@ -90,10 +91,9 @@
       We want to provide the user with two SMS commands to manage their
       subscription status: `add` and `remove`.  These commands will
       toggle a boolean flag for their `Subscriber` record in the database and
-      will determine whether or not they receive messages from our marketing
-      campaign. Because we're not jerks, we don't opt them in automatically -
-      rather, we have them confirm that they want to receive messages from us
-      or not.
+      will determine whether or not they want to receive messages from our
+      marketing campaign. We're not jerks, we don't opt them in automatically -
+      rather, we have them confirm that they want to receive our messages.
 
       To make this happen, we will need to update the controller logic which
       handles the incoming text message to do a couple things:
@@ -113,7 +113,7 @@
     On the server, we grab the message text and image URL, then loop through all
     Subscribers and call the method `send_message` to send the message.
 
-    When the messages are on their way, we render back the index page with a 
+    When the messages are on their way, we render back the index page with a
     success message.
 
 .step(
@@ -124,7 +124,7 @@
     ## Send SMS or MMS Notifications
 
     In the method `send_message` we create a [Twilio REST API client](//github.com/twilio/twilio-ruby)
-    that it can be used to send SMS and MMS messages. The client requires your 
+    that can be used to send SMS and MMS messages. The client requires your
     Twilio account credentials (an account SID and auth token), which can be
     found [in the account portal](/user/account).
 
