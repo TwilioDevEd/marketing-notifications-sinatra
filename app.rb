@@ -35,7 +35,8 @@ post '/messages' do
 end
 
 post '/subscriber' do
-  command = params[:Body]
+  command = params[:Body].downcase
+  puts command + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
   if valid_command?(command)
     subscriber = create_or_update_subscriber(params)
 
@@ -66,13 +67,14 @@ end
 
 def create_or_update_subscriber(params)
   subscriber = Subscriber.first(phone_number: params[:From])
+  command = params[:Body].downcase
   if subscriber
-    subscriber.update(subscribed: subscription?(params[:Body]))
+    subscriber.update(subscribed: subscription?(command))
     subscriber
   else
     Subscriber.create(
       phone_number: params[:From],
-      subscribed: subscription?(params[:Body])
+      subscribed: subscription?(command)
     )
   end
 end

@@ -30,7 +30,7 @@ export TWILIO_NUMBER=your twilio number
 Make sure you have installed [PostgreSQL](http://www.postgresql.org/). If on a Mac, I recommend [Postgres.app](http://postgresapp.com). Given that, we'll use a rake task to generate the database used by the app. You just need to provide a valid user with permission to create databases.
 
 ```
-bundle exec rake createDb[user_name]
+bundle exec rake db:create[user_name]
 ```
 
 #### Step 5. Make sure the tests succeed
@@ -42,7 +42,7 @@ bundle exec rake spec
 #### Step 6. Run the server
 
 ```
-ruby app.rb
+bundle exec ruby app.rb
 ```
 
 #### Step 7. Expose application to the wider internet
