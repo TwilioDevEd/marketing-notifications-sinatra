@@ -70,10 +70,10 @@
     ## Creating Subscribers
 
     If the command is valid, we look in our database for a `Subscriber` with that
-    specific phone number. If it already exists we just update its subscription
-    on the other case we create a new `Subscriber`.
+    specific phone number. If it already exists we just update its subscription--
+    otherwise we create a new `Subscriber`.
 
-    Depending if the `Subscriber` is subscribed or not, we return a TwiML message
+    Depending on the `Subscriber` status, we return the appropriate TwiML message
     to the user.
 
     And that's all we want at this step! We've created a `Subscriber` model to
@@ -130,7 +130,7 @@
 
     Next all we need to do is call `create` on the `client.account.messages`
     object in order to send our message. The Twilio Message API call requires
-    a 'from', `to` and a `body` parameters, the 'media_url' is optional.
+    a 'from', `to` and a `body` parameters-- the 'media_url' is optional.
 
     **See Also**
     * [Twilio Ruby: Send a SMS](//twilio-ruby.readthedocs.org/en/latest/usage/messages.html)
@@ -148,13 +148,8 @@
 
     [**IVR: Phone Tree**](https://www.twilio.com/docs/tutorials/walkthrough/ivr-phone-tree/ruby/rails)
 
-    Easily route callers to the right people and information with an IVR
-    (interactive voice response) system.
-
     [**Automated Survey**](https://www.twilio.com/docs/tutorials/walkthrough/automated-survey/ruby/rails)
 
-    Instantly collect structured data from your users with a survey conducted
-    over a voice call or SMS text messages.
 
     ### Did this help?
 
