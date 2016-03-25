@@ -110,6 +110,3 @@ DEPENDENCIES
   rspec
   sinatra
   twilio-ruby
-
-BUNDLED WITH
-   1.11.2
