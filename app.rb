@@ -36,7 +36,6 @@ end
 
 post '/subscriber' do
   command = params[:Body].downcase
-  puts command + "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
   if valid_command?(command)
     subscriber = create_or_update_subscriber(params)
 

@@ -13,7 +13,7 @@ describe 'marketing notifications' do
   it 'informs the contact when no message is send' do
     allow(Subscriber).to receive(:first).and_return(nil)
 
-    post 'subscriber', { From: '999999999' }.to_json,
+    post 'subscriber', { From: '999999999', Body: 'Some message' }.to_json,
          'CONTENT_TYPE' => 'application/json'
 
     expect(last_response).to be_ok
