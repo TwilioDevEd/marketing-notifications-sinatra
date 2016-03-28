@@ -13,23 +13,17 @@ class Subscriber
       ENV['TWILIO_ACCOUNT_SID'],
       ENV['TWILIO_AUTH_TOKEN']
     )
-    if media_url.nil? || media_url.empty?
-      @client.account.messages.create(
-        from: ENV['TWILIO_PHONE_NUMBER'],
-        to: phone_number,
-        body: message
-      )
-    else
-      @client.account.messages.create(
-        from: ENV['TWILIO_PHONE_NUMBER'],
-        to: phone_number,
-        body: message,
-        media_url: media_url
-      )
-    end
+    message_params = {
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to: phone_number,
+      body: message,
+    }
+
+    message_params.merge(media_url: media_url) unless media_url.nil? || media_url.empty?
+    @client.account.messages.create(message_params)
   end
 
-  def self.subscribed 
+  def self.subscribed
     all(subscribed: true)
   end
 end
