@@ -3,7 +3,7 @@
 
 Use Twilio to create SMS notifications to keep your subscribers in the loop.
 
-[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/server-notifications/ruby/sinatra)!
+[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/marketing-notifications/ruby/sinatra)!
 
 ## Running the application
 
