@@ -1,7 +1,10 @@
 # SMS Notifications
+
 [![build Status](https://travis-ci.org/TwilioDevEd/marketing-notifications-sinatra.svg?branch=master)](https://travis-ci.org/TwilioDevEd/marketing-notifications-sinatra)
 
 Use Twilio to create SMS notifications to keep your subscribers in the loop.
+
+[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/marketing-notifications/ruby/sinatra)!
 
 ## Running the application
 
@@ -63,17 +66,12 @@ On the phone number page enter the address provided by ngrok into the _Messaging
 #### Step 9. Wrap Up!
 
 By now your application should be up and running at [http://localhost:4567/](http://localhost:4567). Now your subscribers will be able to
-text your new Twilio number to Subscribe to your Marketing Notifications Service.
+text your new Twilio number to subscribe to your Marketing Notifications service.
 
 Congratulations!
 
 ## Dependencies
 
 This application uses this Twilio helper library:
+
 * twilio-ruby
-
----------------
-<a href="http://twilio.com/signal">![](https://s3.amazonaws.com/baugues/signal-logo.png)</a>
-
-Join us in San Francisco May 24-25th to [learn best practices from the engineers who create the Twilio stack](https://www.twilio.com/signal). 
-
