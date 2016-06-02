@@ -1,4 +1,5 @@
 # SMS Notifications
+
 [![build Status](https://travis-ci.org/TwilioDevEd/marketing-notifications-sinatra.svg?branch=master)](https://travis-ci.org/TwilioDevEd/marketing-notifications-sinatra)
 
 Use Twilio to create SMS notifications to keep your subscribers in the loop.
@@ -72,10 +73,5 @@ Congratulations!
 ## Dependencies
 
 This application uses this Twilio helper library:
+
 * twilio-ruby
-
----------------
-<a href="http://twilio.com/signal">![](https://s3.amazonaws.com/baugues/signal-logo.png)</a>
-
-Join us in San Francisco May 24-25th to [learn best practices from the engineers who create the Twilio stack](https://www.twilio.com/signal). 
-
