@@ -14,18 +14,19 @@ Use Twilio to create SMS notifications to keep your subscribers in the loop.
 
 This project is built using [Sinatra](http://www.sinatrarb.com/) Framework.
 
+
 1. First clone this repository and `cd` into it.
 
-```
-git clone git@github.com:TwilioDevEd/marketing-notifications-sinatra.git
-cd marketing-notifications-sinatra
-```
+   ```bash
+   $ git clone git@github.com:TwilioDevEd/marketing-notifications-sinatra.git
+   $ cd marketing-notifications-sinatra
+   ```
 
 1. Install dependencies.
 
-```
-bundle
-```
+   ```bash
+   $ bundle
+   ```
 
 1. Copy the `.env.example` file to `.env`, and edit it including your credentials
    for the Twilio API (found at https://www.twilio.com/console/account/settings).
@@ -35,42 +36,42 @@ bundle
 
 1. Create application database.
 
-Make sure you have installed [PostgreSQL](http://www.postgresql.org/). If on a Mac, I recommend [Postgres.app](http://postgresapp.com). Given that, we'll use a rake task to generate the database used by the app. You just need to provide a valid user with permission to create databases.
+   Make sure you have installed [PostgreSQL](http://www.postgresql.org/). If on a Mac, I recommend [Postgres.app](http://postgresapp.com). Given that, we'll use a rake task to generate the database used by the app. You just need to provide a valid user with permission to create databases.
 
-```
-bundle exec rake db:create[user_name]
-```
+   ```bash
+   $ bundle exec rake db:create[user_name]
+   ```
 
 1. Make sure the tests succeed.
 
-```
-bundle exec rake spec
-```
+   ```bash
+   $ bundle exec rake spec
+   ```
 
 1. Run the server.
 
-```
-bundle exec ruby app.rb
-```
+   ```
+   $ bundle exec ruby app.rb
+   ```
 
 1. Expose application to the wider internet.
 
-We can use [ngrok](https://ngrok.com/) for this purpose.
+   We can use [ngrok](https://ngrok.com/) for this purpose.
 
-```
-  ngrok http 4567
-```
+   ```bash
+   $ ngrok http 4567
+   ```
 
 1. Configure your Twilio number.
 
-Go to your dashboard on [Twilio](https://www.twilio.com/user/account/phone-numbers/incoming). Click on Twilio Numbers and choose a number to setup.
-On the phone number page enter the address provided by ngrok into the _Messaging_ Request URL field. It should be something like this:
+   Go to your dashboard on [Twilio](https://www.twilio.com/user/account/phone-numbers/incoming). Click on Twilio Numbers and choose a number to setup.
+   On the phone number page enter the address provided by ngrok into the _Messaging_ Request URL field. It should be something like this:
 
-```
-http://9a159ccf.ngrok.io/subscriber
-```
+   ```
+   http://9a159ccf.ngrok.io/subscriber
+   ```
 
-![Request URL](http://howtodocs.s3.amazonaws.com/setup-twilio-number.png)
+   ![Request URL](http://howtodocs.s3.amazonaws.com/setup-twilio-number.png)
 
 1. Check it out at [`http://localhost:4567`](http://localhost:4567).
 
