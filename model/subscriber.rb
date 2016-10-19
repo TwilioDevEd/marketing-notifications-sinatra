@@ -14,7 +14,7 @@ class Subscriber
       ENV['TWILIO_AUTH_TOKEN']
     )
     message_params = {
-      from: ENV['TWILIO_PHONE_NUMBER'],
+      from: ENV['TWILIO_NUMBER'],
       to: phone_number,
       body: message,
     }
