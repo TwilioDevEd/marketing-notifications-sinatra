@@ -16,7 +16,7 @@ class Subscriber
       body: message
     }
 
-    message_params.merge(media_url: media_url) unless media_url.nil? || media_url.empty?
+    message_params.merge!(media_url: media_url) unless media_url.nil? || media_url.empty?
     @client.messages.create(message_params)
   end
 
