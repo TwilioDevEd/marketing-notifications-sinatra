@@ -9,21 +9,27 @@ class Subscriber
   property :subscribed, Boolean
 
   def send_message(message, media_url=nil)
-    @client = Twilio::REST::Client.new(
-      ENV['TWILIO_ACCOUNT_SID'],
-      ENV['TWILIO_AUTH_TOKEN']
-    )
+    @client = rest_client
     message_params = {
       from: ENV['TWILIO_NUMBER'],
       to: phone_number,
-      body: message,
+      body: message
     }
 
     message_params.merge(media_url: media_url) unless media_url.nil? || media_url.empty?
-    @client.account.messages.create(message_params)
+    @client.messages.create(message_params)
   end
 
   def self.subscribed
     all(subscribed: true)
+  end
+
+  private
+
+  def rest_client
+    client = Twilio::REST::Client.new(
+      ENV['TWILIO_ACCOUNT_SID'],
+      ENV['TWILIO_AUTH_TOKEN']
+    )
   end
 end
