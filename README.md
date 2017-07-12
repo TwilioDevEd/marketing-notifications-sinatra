@@ -18,14 +18,14 @@ This project is built using [Sinatra](http://www.sinatrarb.com/) Framework.
 1. First clone this repository and `cd` into it.
 
    ```bash
-   $ git clone git@github.com:TwilioDevEd/marketing-notifications-sinatra.git
-   $ cd marketing-notifications-sinatra
+   git clone git@github.com:TwilioDevEd/marketing-notifications-sinatra.git
+   cd marketing-notifications-sinatra
    ```
 
 1. Install dependencies.
 
    ```bash
-   $ bundle
+   bundle
    ```
 
 1. Copy the `.env.example` file to `.env`, and edit it including your credentials
@@ -39,19 +39,19 @@ This project is built using [Sinatra](http://www.sinatrarb.com/) Framework.
    Make sure you have installed [PostgreSQL](http://www.postgresql.org/). If on a Mac, I recommend [Postgres.app](http://postgresapp.com). Given that, we'll use a rake task to generate the database used by the app. You just need to provide a valid user with permission to create databases.
 
    ```bash
-   $ bundle exec rake db:create[user_name]
+   bundle exec rake db:create[user_name]
    ```
 
 1. Make sure the tests succeed.
 
    ```bash
-   $ bundle exec rake spec
+   bundle exec rake spec
    ```
 
 1. Run the server.
 
    ```
-   $ bundle exec ruby app.rb
+   bundle exec ruby app.rb
    ```
 
 1. Expose application to the wider internet.
@@ -59,7 +59,7 @@ This project is built using [Sinatra](http://www.sinatrarb.com/) Framework.
    We can use [ngrok](https://ngrok.com/) for this purpose.
 
    ```bash
-   $ ngrok http 4567
+   ngrok http 4567
    ```
 
 1. Configure your Twilio number.

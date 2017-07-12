@@ -59,8 +59,8 @@ end
 
 def format_message(message)
   response = Twilio::TwiML::MessagingResponse.new
-  response.message message
-  response.to_xml_str
+  response.message(body: message)
+  response.to_s
 end
 
 def create_or_update_subscriber(params)
