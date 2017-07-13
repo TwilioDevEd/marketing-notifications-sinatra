@@ -58,10 +58,9 @@ def valid_command?(command)
 end
 
 def format_message(message)
-  response = Twilio::TwiML::Response.new do |r|
-    r.Message message
-  end
-  response.text
+  response = Twilio::TwiML::MessagingResponse.new
+  response.message(body: message)
+  response.to_s
 end
 
 def create_or_update_subscriber(params)
