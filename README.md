@@ -4,7 +4,7 @@
 
 # SMS Notifications with Twilio, Ruby and Sinatra
 
-[![build Status](https://travis-ci.org/TwilioDevEd/marketing-notifications-sinatra.svg?branch=master)](https://travis-ci.org/TwilioDevEd/marketing-notifications-sinatra)
+[![Build and test](https://github.com/TwilioDevEd/marketing-notifications-sinatra/actions/workflows/build_test.yml/badge.svg)](https://github.com/TwilioDevEd/marketing-notifications-sinatra/actions/workflows/build_test.yml)
 
 Use Twilio to create SMS notifications to keep your subscribers in the loop.
 
