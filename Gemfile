@@ -1,6 +1,7 @@
 # A sample Gemfile
 source 'https://rubygems.org'
 
+gem 'dotenv'
 gem 'sinatra'
 gem 'rspec'
 gem 'rack-test'
