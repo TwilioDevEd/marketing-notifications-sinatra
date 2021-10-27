@@ -10,7 +10,7 @@ Use Twilio to create SMS notifications to keep your subscribers in the loop.
 
 [Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/marketing-notifications/ruby/sinatra)!
 
-## Local development
+## Get started
 
 This project is built using [Sinatra](http://www.sinatrarb.com/) Framework.
 
@@ -31,8 +31,6 @@ This project is built using [Sinatra](http://www.sinatrarb.com/) Framework.
 1. Copy the `.env.example` file to `.env`, and edit it including your credentials
    for the Twilio API (found at https://www.twilio.com/console/account/settings).
    You will also need a [Twilio Number](https://www.twilio.com/console/phone-numbers/incoming).
-
-   Run `source .env` to export the environment variables.
 
 1. Create application database.
 
@@ -74,6 +72,14 @@ This project is built using [Sinatra](http://www.sinatrarb.com/) Framework.
    ![Request URL](http://howtodocs.s3.amazonaws.com/setup-twilio-number.png)
 
 1. Check it out at [`http://localhost:4567`](http://localhost:4567).
+
+### Configure Development vs Production Settings
+
+By default, this application will run in production mode - stack traces will not be visible in the web browser. If you would like to run this application in development locally, change the `APP_ENV` variable in your `.env` file.
+
+`APP_ENV=development`
+
+For more about development vs production, visit [Sinatra's configuration page](http://sinatrarb.com/configuration.html).
 
 ## Meta
 

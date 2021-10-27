@@ -1,9 +1,18 @@
+require 'dotenv'
 require 'sinatra'
 require 'data_mapper'
 require 'json'
 require 'rack/contrib'
 require 'tilt/erb'
 require_relative 'model/subscriber'
+
+# Load environment configuration
+Dotenv.load
+
+# Set the environment after dotenv loads
+# Default to production
+environment = (ENV['APP_ENV'] || ENV['RACK_ENV'] || :production).to_sym
+set :environment, environment
 
 database_url = 'postgres://postgres:postgres@localhost/marketing_notifications'
 DataMapper.setup(:default, database_url)
