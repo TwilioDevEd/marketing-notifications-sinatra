@@ -69,7 +69,7 @@ This project is built using [Sinatra](http://www.sinatrarb.com/) Framework.
    http://9a159ccf.ngrok.io/subscriber
    ```
 
-   ![Request URL](http://howtodocs.s3.amazonaws.com/setup-twilio-number.png)
+   [Learn how to configure a Twilio phone number for Programmable SMS](https://support.twilio.com/hc/en-us/articles/223136047-Configure-a-Twilio-Phone-Number-to-Receive-and-Respond-to-Messages)
 
 1. Check it out at [`http://localhost:4567`](http://localhost:4567).
 
