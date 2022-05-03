@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 
 gem 'dotenv'
-gem 'sinatra'
+gem 'sinatra', '>= 2.2.0'
 gem 'rspec'
 gem 'rack-test'
 gem 'data_mapper'
