@@ -66,14 +66,14 @@ GEM
     multi_json (1.11.2)
     multipart-post (2.0.0)
     pg (1.2.2)
-    rack (1.6.4)
+    rack (1.6.13)
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
       rack (~> 1.4)
-    rack-protection (1.5.3)
+    rack-protection (1.5.5)
       rack
-    rack-test (0.6.3)
-      rack (>= 1.0)
+    rack-test (2.0.2)
+      rack (>= 1.3)
     rake (10.5.0)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
@@ -88,12 +88,12 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    sinatra (1.4.7)
+    sinatra (1.4.8)
       rack (~> 1.5)
       rack-protection (~> 1.4)
       tilt (>= 1.3, < 3)
     stringex (1.5.1)
-    tilt (2.0.2)
+    tilt (2.0.11)
     twilio-ruby (5.0.0)
       faraday (~> 0.9)
       jwt (~> 1.5)
@@ -117,4 +117,4 @@ DEPENDENCIES
   twilio-ruby (>= 5.0.0)
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
