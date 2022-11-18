@@ -65,7 +65,7 @@ GEM
     libxml-ruby (3.0.0)
     multi_json (1.11.2)
     multipart-post (2.0.0)
-    pg (1.2.2)
+    pg (1.4.5)
     rack (1.6.4)
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
